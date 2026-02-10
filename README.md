@@ -1,7 +1,7 @@
 # 🛍️ ShopHub  
 **Production-Style E-commerce Frontend Architecture**
 
-ShopHub is a **modern, scalable e-commerce application** built with **React 18 + TypeScript**, structured using a **feature-driven architecture** that mirrors real-world frontend engineering practices.
+ShopHub is a **modern, scalable e-commerce application** built with **React 19 + TypeScript**, structured using a **feature-driven architecture** that mirrors real-world frontend engineering practices.
 
 This project prioritizes:
 
@@ -15,12 +15,12 @@ This project prioritizes:
 ---
 
 ## 🚀 Live Demo
-> _(Add deployment link — Vercel / Netlify)_
+
 
 ---
 
 ## 📸 Screenshots
-_(Add later)_
+
 
 - Product Catalog  
 - Product Detail  
@@ -48,15 +48,15 @@ ShopHub is not just a UI project — it is designed to simulate how a **producti
 
 | Category | Technology |
 |----------|------------|
-| Framework | React 18 |
+| Framework | React 19 |
 | Language | TypeScript (strict mode) |
 | Routing | React Router v6 |
 | Server State | TanStack React Query |
-| Global State | Zustand |
+| Global State | Context |
 | HTTP Client | Axios |
 | Forms | React Hook Form + Zod |
 | Styling | Tailwind CSS |
-| UI Accessibility | Headless UI / Radix |
+| UI Accessibility | Shadcn ui |
 | Animations | Framer Motion |
 | Build Tool | Vite |
 
@@ -169,14 +169,14 @@ utils (optional)
 ### 1️⃣ Clone
 
 ```bash
-git clone https://github.com/your-username/shophub.git
-cd shophub
+git clone https://github.com/brunomanuel00/ShopHub-E-Commerce.git
+cd ShopHub-E-Commerce
 ```
 
 ### 2️⃣ Install
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 3️⃣ Environment Variables
@@ -190,7 +190,7 @@ VITE_API_URL=https://dummyjson.com
 ### 4️⃣ Run Dev Server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ---
@@ -199,10 +199,10 @@ npm run dev
 
 | Command | Purpose |
 |--------|---------|
-| npm run dev | Start dev server |
-| npm run build | Production build |
-| npm run preview | Preview build |
-| npm run test | Run tests |
+| pnpm run dev | Start dev server |
+| pnpm run build | Production build |
+| pnpm run preview | Preview build |
+| pnpm run test | Run tests |
 
 ---
 
@@ -240,8 +240,18 @@ npm run dev
 ### Why React Query instead of Redux for server data?
 Server state has different constraints (caching, background refetching, pagination). React Query is purpose-built for async data, reducing boilerplate and improving performance.
 
-### Why Zustand instead of Redux Toolkit?
-The cart and auth state are **client-only domains** with minimal complexity. Zustand provides a lighter abstraction with less boilerplate while remaining scalable.
+### Why React Context instead of Redux Toolkit?
+The application uses **React Context** + **custom hooks** for managing client-side domains like authentication and UI state.
+
+At the current scale of the project:
+
+The state surface is relatively small
+
+No complex cross-feature state orchestration is required
+
+**React Context keeps the solution native, lightweight, and dependency-free**
+
+This approach reduces boilerplate while remaining scalable through feature-level encapsulation and separation of concerns. If the application grows in complexity (e.g., advanced caching logic, large-scale shared state, or real-time synchronization), migrating to a dedicated state manager like Redux Toolkit or Zustand would be a natural evolution.
 
 ### Why Feature-Based Structure?
 Encapsulating each business domain improves maintainability and allows independent scaling of features without tight coupling.
