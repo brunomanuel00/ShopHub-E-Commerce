@@ -25,3 +25,6 @@ dist-ssr
 .env
 .prettierrc
 .eslintrc.cjs
+.env
+.eslintrc.cjs
+.prettierrc
